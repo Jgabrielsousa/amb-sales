@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "34d28813-971b-4f6c-91f1-f580701d60b6",
+		"name": "Ambev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7547164",
+		"_collection_link": "https://red-trinity-824439.postman.co/workspace/Ticket~a219a4e0-9bf1-42b4-8455-00d9f4fae324/collection/7547164-34d28813-971b-4f6c-91f1-f580701d60b6?action=share&source=collection_link&creator=7547164"
+	},
+	"item": [
+		{
+			"name": "Errors",
+			"item": [
+				{
+					"name": "Error Create Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Sert ID \", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.environment.set(\"Id\",responseData.data.id)\r",
+									"     pm.expect(pm.response.code).to.equal(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"saleNumber\": \"123\",\r\n  \"saleDate\": \"2025-05-17T11:46:16.974Z\",\r\n  \"customer\": \"Daniel\",\r\n  \"totalSaleAmount\": 10,\r\n  \"branch\": \"xpto\",\r\n  \"SalesItem\": [\r\n    {\r\n      \"product\": \"Carne\",\r\n      \"quantity\": 10,\r\n      \"unitPrice\": 15.90,\r\n      \"discount\": 0.4,\r\n      \"totalAmount\": 127.20\r\n    }\r\n  ],\r\n  \"isCancelled\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7181/api/Sales",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7181",
+							"path": [
+								"api",
+								"Sales"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://localhost:7181/api/Sales' \\\r\n  -H 'accept: text/plain' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"saleNumber\": \"string\",\r\n  \"saleDate\": \"2025-05-17T13:46:14.327Z\",\r\n  \"customer\": \"string\",\r\n  \"totalSaleAmount\": 0,\r\n  \"branch\": \"string\",\r\n  \"items\": [\r\n    {\r\n      \"product\": \"string\",\r\n      \"quantity\": 0,\r\n      \"unitPrice\": 0,\r\n      \"discount\": 0,\r\n      \"totalAmount\": 0\r\n    }\r\n  ],\r\n  \"isCancelled\": true\r\n}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Error Update Items",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"saleNumber\": \"123\",\r\n  \"saleDate\": \"2025-05-17T14:46:16.974Z\",\r\n  \"customer\": \"Paulo\",\r\n  \"totalSaleAmount\": 20,\r\n  \"branch\": \"xpto update\",\r\n  \"SalesItem\": [\r\n    {\r\n      \"product\": \"Ovos\",\r\n      \"quantity\": 10,\r\n      \"unitPrice\": 15.90,\r\n      \"discount\": 0.20,\r\n      \"totalAmount\": 127.20\r\n    }\r\n    ,{\r\n      \"product\": \"Mangas\",\r\n      \"quantity\": 10,\r\n      \"unitPrice\": 15.90,\r\n      \"discount\": 0.20,\r\n      \"totalAmount\": 127.20\r\n    }\r\n  ],\r\n  \"isCancelled\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7181/api/Sales/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7181",
+							"path": [
+								"api",
+								"Sales",
+								"{{$guid}}"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://localhost:7181/api/Sales' \\\r\n  -H 'accept: text/plain' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"saleNumber\": \"string\",\r\n  \"saleDate\": \"2025-05-17T13:46:14.327Z\",\r\n  \"customer\": \"string\",\r\n  \"totalSaleAmount\": 0,\r\n  \"branch\": \"string\",\r\n  \"items\": [\r\n    {\r\n      \"product\": \"string\",\r\n      \"quantity\": 0,\r\n      \"unitPrice\": 0,\r\n      \"discount\": 0,\r\n      \"totalAmount\": 0\r\n    }\r\n  ],\r\n  \"isCancelled\": true\r\n}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Error Get Item By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7181/api/Sales/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7181",
+							"path": [
+								"api",
+								"Sales",
+								"{{$guid}}"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://localhost:7181/api/Sales/4406fa68-af11-4ed9-bfff-5da9db8a0130' \\\r\n  -H 'accept: text/plain'"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item By ID Error",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7181/api/Sales/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7181",
+							"path": [
+								"api",
+								"Sales",
+								"{{$guid}}"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://localhost:7181/api/Sales/4406fa68-af11-4ed9-bfff-5da9db8a0130' \\\r\n  -H 'accept: text/plain'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Sert ID \", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.environment.set(\"Id\",responseData.data.id)\r",
+							"     pm.expect(pm.response.code).to.equal(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"saleNumber\": \"123\",\r\n  \"saleDate\": \"2025-05-17T11:46:16.974Z\",\r\n  \"customer\": \"Daniel\",\r\n  \"totalSaleAmount\": 10,\r\n  \"branch\": \"xpto\",\r\n  \"SalesItem\": [\r\n    {\r\n      \"product\": \"Carne\",\r\n      \"quantity\": 10,\r\n      \"unitPrice\": 15.90,\r\n      \"discount\": 0.20,\r\n      \"totalAmount\": 127.20\r\n    }\r\n  ],\r\n  \"isCancelled\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7181/api/Sales",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7181",
+					"path": [
+						"api",
+						"Sales"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://localhost:7181/api/Sales' \\\r\n  -H 'accept: text/plain' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"saleNumber\": \"string\",\r\n  \"saleDate\": \"2025-05-17T13:46:14.327Z\",\r\n  \"customer\": \"string\",\r\n  \"totalSaleAmount\": 0,\r\n  \"branch\": \"string\",\r\n  \"items\": [\r\n    {\r\n      \"product\": \"string\",\r\n      \"quantity\": 0,\r\n      \"unitPrice\": 0,\r\n      \"discount\": 0,\r\n      \"totalAmount\": 0\r\n    }\r\n  ],\r\n  \"isCancelled\": true\r\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Items",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"saleNumber\": \"123\",\r\n  \"saleDate\": \"2025-05-17T14:46:16.974Z\",\r\n  \"customer\": \"Paulo\",\r\n  \"totalSaleAmount\": 20,\r\n  \"branch\": \"xpto update\",\r\n  \"SalesItem\": [\r\n    {\r\n      \"product\": \"Ovos\",\r\n      \"quantity\": 10,\r\n      \"unitPrice\": 15.90,\r\n      \"discount\": 0.20,\r\n      \"totalAmount\": 127.20\r\n    }\r\n    ,{\r\n      \"product\": \"Mangas\",\r\n      \"quantity\": 10,\r\n      \"unitPrice\": 15.90,\r\n      \"discount\": 0.20,\r\n      \"totalAmount\": 127.20\r\n    }\r\n  ],\r\n  \"isCancelled\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7181/api/Sales/{{Id}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7181",
+					"path": [
+						"api",
+						"Sales",
+						"{{Id}}"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://localhost:7181/api/Sales' \\\r\n  -H 'accept: text/plain' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"saleNumber\": \"string\",\r\n  \"saleDate\": \"2025-05-17T13:46:14.327Z\",\r\n  \"customer\": \"string\",\r\n  \"totalSaleAmount\": 0,\r\n  \"branch\": \"string\",\r\n  \"items\": [\r\n    {\r\n      \"product\": \"string\",\r\n      \"quantity\": 0,\r\n      \"unitPrice\": 0,\r\n      \"discount\": 0,\r\n      \"totalAmount\": 0\r\n    }\r\n  ],\r\n  \"isCancelled\": true\r\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Item By ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7181/api/Sales/{{Id}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7181",
+					"path": [
+						"api",
+						"Sales",
+						"{{Id}}"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://localhost:7181/api/Sales/4406fa68-af11-4ed9-bfff-5da9db8a0130' \\\r\n  -H 'accept: text/plain'"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Item By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7181/api/Sales/{{Id}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7181",
+					"path": [
+						"api",
+						"Sales",
+						"{{Id}}"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://localhost:7181/api/Sales/4406fa68-af11-4ed9-bfff-5da9db8a0130' \\\r\n  -H 'accept: text/plain'"
+			},
+			"response": []
+		}
+	]
+}
